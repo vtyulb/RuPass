@@ -7,11 +7,15 @@ MainWindow::MainWindow(QApplication *app, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->password->setEchoMode(QLineEdit::Password);
+    ui->siteLine->setReadOnly(true);
+    ui->passwordLine->setReadOnly(true);
+    ui->loginLine->setReadOnly(true);
 
     QObject::connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
     QObject::connect(ui->actionAbout_Qt, SIGNAL(triggered()), app, SLOT(aboutQt()));
     QObject::connect(ui->password, SIGNAL(textChanged(QString)), this, SLOT(recalculate()));
     QObject::connect(ui->address, SIGNAL(textChanged(QString)), this, SLOT(recalculate()));
+    QObject::connect(ui->checkBox, SIGNAL(clicked(bool)), this, SLOT(showPass(bool)));
 
     recalculate();
 }
@@ -24,7 +28,6 @@ MainWindow::~MainWindow()
 void MainWindow::recalculate() {
     QString site = parseAddress(ui->address->text());
     QString password = ui->password->text();
-    ui->siteLabel->setText(site);
     if (password.length() < 3)
         setError("Password must contains at least 3 symbols");
     else {
@@ -63,9 +66,9 @@ void MainWindow::recalculate() {
             else if (main[i] == '3')
                 main[i] = special[rand() % special.length()];
 
-        ui->siteLabel->setText("Site: " + site);
-        ui->passwordLabel->setText("Password: " + main.right(10));
-        ui->loginLabel->setText("Login: " + main.left(10));
+        ui->siteLine->setText(site);
+        ui->passwordLine->setText(main.right(10));
+        ui->loginLine->setText(main.left(10));
     }
 }
 
@@ -111,4 +114,11 @@ void MainWindow::swap(QCharRef a, QCharRef b) {
     QChar c = a;
     a = b;
     b = c;
+}
+
+void MainWindow::showPass(bool show) {
+    if (show)
+        ui->password->setEchoMode(QLineEdit::Normal);
+    else
+        ui->password->setEchoMode(QLineEdit::Password);
 }

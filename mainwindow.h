@@ -32,6 +32,7 @@ private:
     void swap(QCharRef a, QCharRef b);
 private slots:
     void recalculate();
+    void showPass(bool);
 };
 
 #endif // MAINWINDOW_H

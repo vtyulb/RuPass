@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>294</width>
-    <height>306</height>
+    <width>297</width>
+    <height>326</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,6 +45,20 @@
          </property>
         </widget>
        </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Show password</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QCheckBox" name="checkBox">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </item>
@@ -73,27 +87,36 @@
       <property name="title">
        <string>Output</string>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
         <widget class="QLabel" name="siteLabel">
          <property name="text">
-          <string>githubcom</string>
+          <string>Site</string>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="1" column="0">
         <widget class="QLabel" name="loginLabel">
          <property name="text">
           <string>Login</string>
          </property>
         </widget>
        </item>
-       <item>
+       <item row="2" column="0">
         <widget class="QLabel" name="passwordLabel">
          <property name="text">
           <string>Password</string>
          </property>
         </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="siteLine"/>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="loginLine"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="passwordLine"/>
        </item>
       </layout>
      </widget>
@@ -105,7 +128,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>294</width>
+     <width>297</width>
      <height>19</height>
     </rect>
    </property>
