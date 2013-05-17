@@ -61,6 +61,13 @@
      </widget>
     </item>
     <item>
+     <widget class="QLabel" name="errorLabel">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item>
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -82,7 +89,7 @@
        <item>
         <widget class="QLabel" name="siteLabel">
          <property name="text">
-          <string>github.com</string>
+          <string>githubcom</string>
          </property>
         </widget>
        </item>

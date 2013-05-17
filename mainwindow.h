@@ -6,7 +6,7 @@
 #include <QApplication>
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
@@ -16,8 +16,20 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QApplication *app, QWidget *parent = 0);
     ~MainWindow();
+
+    QString small = "abcdefghijklmnopqrstuvwxyz";
+    QString big = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    QString number = "0123456789";
+    QString special = "!@#$%^&*|";
 private:
     Ui::MainWindow *ui;
+    long long last;
+    long long beforeLast;
+
+    void setError(QString);
+    QString parseAddress(QString);
+    int rand();
+    void swap(QCharRef a, QCharRef b);
 private slots:
     void recalculate();
 };
