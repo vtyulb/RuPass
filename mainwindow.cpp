@@ -42,7 +42,7 @@ void MainWindow::recalculate() {
         }
 
         last = hash << 32;
-        beforeLast = (hash << 32) >> 32;
+        beforeLast = hash >> 32;
 
         main = "";
         for (int i = 0; i < 6; i++) main += '0'; // small latin
