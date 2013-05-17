@@ -1,9 +1,11 @@
+This functionality is not done:
+
 This project generates pair(password login)
 from pair(master-password name_of_site).
 You cannot get master-password from other 3 components.
 There is no base, so if you loss all data on your computer,
-then you can install this program and you got back all 
-your information about password and logins.
+then you can install this program and you would get all back
+your information about passwords and logins.
 This program does not remember name of sites, where you have accounts.
 
 
