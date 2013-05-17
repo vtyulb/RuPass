@@ -63,9 +63,9 @@ void MainWindow::recalculate() {
             else if (main[i] == '3')
                 main[i] == special[rand() % special.length()];
 
-        ui->siteLabel->setText(site);
-        ui->passwordLabel->setText(main.right(10));
-        ui->loginLabel->setText(main.left(10));
+        ui->siteLabel->setText("Site: " + site);
+        ui->passwordLabel->setText("Password: " + main.right(10));
+        ui->loginLabel->setText("Login: " + main.left(10));
     }
 }
 
