@@ -59,9 +59,9 @@ void MainWindow::recalculate() {
             else if (main[i] == '1')
                 main[i] = number[rand() % number.length()];
             else if (main[i] == '2')
-                main[i] == big[rand() % big.length()];
+                main[i] = big[rand() % big.length()];
             else if (main[i] == '3')
-                main[i] == special[rand() % special.length()];
+                main[i] = special[rand() % special.length()];
 
         ui->siteLabel->setText("Site: " + site);
         ui->passwordLabel->setText("Password: " + main.right(10));
@@ -84,6 +84,9 @@ QString MainWindow::parseAddress(QString address) {
     for (int i = 0; i < address.length(); i++)
         if ((address[i] == ':') || (address[i] == '/') || (address[i] == '.') || (address[i] == ' '))
             address.remove(i--, 1);
+
+    if (address.left(5) == "https")
+        address = address.right(address.length() - 5);
 
     if (address.left(4) == "http")
         address = address.right(address.length() - 4);
