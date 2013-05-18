@@ -30,18 +30,18 @@ void MainWindow::recalculate() {
     QString site = parseAddress(ui->address->text());
     QString password = ui->password->text();
     if (password.length() < 3)
-        setError("Password must contains at least 3 symbols");
+        setError(tr("Password must contains at least 3 symbols"));
     else {
         setError("");
         long long hash = 0;
-        long long p = password[0].cell() * 256 + password[1].cell();
-        last = password[password.length() - 1].cell();
-        beforeLast = password[password.length() - 2].cell();
+        long long p = password[0].unicode() * 256 + password[1].unicode();
+        last = password[password.length() - 1].unicode();
+        beforeLast = password[password.length() - 2].unicode();
         password.remove(0, 2);
         QString main = password.left(password.length() / 2) + site + password.right((password.length() + 1) / 2);
         for (int i = 0; i < main.length(); i++) {
             hash *= p;
-            hash += main[i].cell() * rand();
+            hash += main[i].unicode() * rand();
         }
 
         last = hash << 32;
