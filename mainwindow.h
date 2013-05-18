@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QApplication>
+#include <QString>
 
 namespace Ui {
     class MainWindow;
@@ -13,6 +14,12 @@ const int normal = 0;
 const int warning = 1;
 const int critical = 2;
 
+const QString small = "abcdefghijklmnopqrstuvwxyz";
+const QString big = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const QString number = "0123456789";
+const QString special = "!@#$%^&*|";
+
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -20,11 +27,6 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QApplication *app, QWidget *parent = 0);
     ~MainWindow();
-
-    QString small = "abcdefghijklmnopqrstuvwxyz";
-    QString big = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    QString number = "0123456789";
-    QString special = "!@#$%^&*|";
 
 private:
     Ui::MainWindow *ui;
