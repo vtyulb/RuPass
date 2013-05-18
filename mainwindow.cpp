@@ -96,6 +96,7 @@ void MainWindow::setError(int code, QString error) {
 }
 
 QString MainWindow::parseAddress(QString address) {
+    address = address.toLower();
     for (int i = 0; i < address.length(); i++)
         if ((address[i] == ':') || (address[i] == '/') || (address[i] == '.') || (address[i] == ' '))
             address.remove(i--, 1);
