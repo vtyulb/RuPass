@@ -7,6 +7,7 @@ MainWindow::MainWindow(QApplication *app, QWidget *parent) :
 {
     ui->setupUi(this);
     ui->password->setEchoMode(QLineEdit::Password);
+    ui->password->setFocus();
     ui->siteLine->setReadOnly(true);
     ui->passwordLine->setReadOnly(true);
     ui->loginLine->setReadOnly(true);
@@ -104,13 +105,13 @@ QString MainWindow::parseAddress(QString address) {
 }
 
 int MainWindow::rand() {
-    int i = beforeLast * 999999937 + last * 31 + 1;
+    long long i = beforeLast * 999999937 + last * 31 + 1;
     beforeLast = last;
     last = i;
-    if (i < 0)
-        return -i;
+    if (int(i) < 0)
+        return -int(i);
     else
-        return i;
+        return int(i);
 }
 
 void MainWindow::swap(QCharRef a, QCharRef b) {
