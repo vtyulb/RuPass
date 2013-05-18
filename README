@@ -1,3 +1,10 @@
+Attention!
+This project is not done. So do't use
+this program. Algorithm of generation
+can be changed. I delete this strings
+when I got stability. 
+
+
 This project generates pair(password login)
 from pair(master-password name_of_site).
 You cannot get master-password from other 3 components.
@@ -7,7 +14,6 @@ your information about passwords and logins.
 This program does not remember names of sites, where you have accounts.
 
 
-There are only three things that you should remember - your master-password,
-name of this program and sites where you have accounts.
-If you forgot it you loss all login data.
-
+With this program there are only three things that you 
+should remember - your master-password, name of this program 
+and sites where you have accounts.

@@ -33,6 +33,7 @@ private:
 private slots:
     void recalculate();
     void showPass(bool);
+    void showAbout();
 };
 
 #endif // MAINWINDOW_H

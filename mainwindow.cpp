@@ -13,6 +13,7 @@ MainWindow::MainWindow(QApplication *app, QWidget *parent) :
 
     QObject::connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
     QObject::connect(ui->actionAbout_Qt, SIGNAL(triggered()), app, SLOT(aboutQt()));
+    QObject::connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
     QObject::connect(ui->password, SIGNAL(textChanged(QString)), this, SLOT(recalculate()));
     QObject::connect(ui->address, SIGNAL(textChanged(QString)), this, SLOT(recalculate()));
     QObject::connect(ui->checkBox, SIGNAL(clicked(bool)), this, SLOT(showPass(bool)));
@@ -34,11 +35,13 @@ void MainWindow::recalculate() {
         setError("");
         long long hash = 0;
         long long p = password[0].cell() * 256 + password[1].cell();
+        last = password[password.length() - 1].cell();
+        beforeLast = password[password.length() - 2].cell();
         password.remove(0, 2);
         QString main = password.left(password.length() / 2) + site + password.right((password.length() + 1) / 2);
         for (int i = 0; i < main.length(); i++) {
             hash *= p;
-            hash += main[i].cell();
+            hash += main[i].cell() * rand();
         }
 
         last = hash << 32;
@@ -121,4 +124,8 @@ void MainWindow::showPass(bool show) {
         ui->password->setEchoMode(QLineEdit::Normal);
     else
         ui->password->setEchoMode(QLineEdit::Password);
+}
+
+void MainWindow::showAbout() {
+    QMessageBox::about(this, tr("about RuPass"), tr("RuPass - simple program for generation\npasswords and logins.\nWritten by russian author - Vladislav Tyulbashev.\nvladislav.tyulbashev@yandex.ru"));
 }
