@@ -118,7 +118,7 @@ QString MainWindow::parseAddress(QString address) {
 }
 
 unsigned int MainWindow::rand() {
-    long long i = beforeLast * 3 + last * 5 + 7;
+    unsigned long long i = beforeLast * 3 + last * 5 + 7;
     beforeLast = last;
     last = i;
     return i % 999999937;
