@@ -30,10 +30,14 @@ MainWindow::~MainWindow()
 void MainWindow::recalculate() {
     QString site = parseAddress(ui->address->text());
     QString password = ui->password->text();
-    if (password.length() < 3)
-        setError(tr("Password must contains at least 3 symbols"));
+    if (password.length() < 2)
+        setError(critical, tr("Password must contains at least 2 symbols"));
     else {
-        setError("");
+        if (password.length() < 6)
+            setError(warning, tr("Password is too small for avoiding collisions"));
+        else
+            setError(normal);
+
         long long hash = 0;
         long long p = password[0].unicode() * 256 + password[1].unicode();
         last = password[password.length() - 1].unicode();
@@ -76,14 +80,18 @@ void MainWindow::recalculate() {
     }
 }
 
-void MainWindow::setError(QString error) {
-    if (error == "") {
+void MainWindow::setError(int code, QString error) {
+    if (code == normal) {
         ui->errorLabel->hide();
         ui->outputBox->show();
-    } else {
+    } else if (code == critical) {
         ui->errorLabel->setText(error);
         ui->errorLabel->show();
         ui->outputBox->hide();
+    } else {
+        ui->errorLabel->setText(error);
+        ui->errorLabel->show();
+        ui->outputBox->show();
     }
 }
 

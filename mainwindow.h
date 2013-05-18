@@ -9,6 +9,10 @@ namespace Ui {
     class MainWindow;
 }
 
+const int normal = 0;
+const int warning = 1;
+const int critical = 2;
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -21,12 +25,13 @@ public:
     QString big = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     QString number = "0123456789";
     QString special = "!@#$%^&*|";
+
 private:
     Ui::MainWindow *ui;
     long long last;
     long long beforeLast;
 
-    void setError(QString);
+    void setError(int code, QString error = "");
     QString parseAddress(QString);
     int rand();
     void swap(QCharRef a, QCharRef b);
