@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <stdio.h>
+#include <iostream>
+
+using std::cout;
 
 MainWindow::MainWindow(QApplication *app, QWidget *parent) :
     QMainWindow(parent),
@@ -113,14 +117,11 @@ QString MainWindow::parseAddress(QString address) {
     return address;
 }
 
-int MainWindow::rand() {
-    long long i = beforeLast * 999999937 + last * 31 + 1;
+unsigned int MainWindow::rand() {
+    long long i = beforeLast * 3 + last * 5 + 7;
     beforeLast = last;
     last = i;
-    if (int(i) < 0)
-        return -int(i);
-    else
-        return int(i);
+    return i % 999999937;
 }
 
 void MainWindow::swap(QCharRef a, QCharRef b) {

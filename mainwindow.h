@@ -35,7 +35,7 @@ private:
 
     void setError(int code, QString error = "");
     QString parseAddress(QString);
-    int rand();
+    unsigned int rand();
     void swap(QCharRef a, QCharRef b);
 private slots:
     void recalculate();
