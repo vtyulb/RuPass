@@ -30,8 +30,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    long long last;
-    long long beforeLast;
+    unsigned long long last;
+    unsigned long long beforeLast;
 
     void setError(int code, QString error = "");
     QString parseAddress(QString);

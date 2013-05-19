@@ -42,8 +42,8 @@ void MainWindow::recalculate() {
         else
             setError(normal);
 
-        long long hash = 0;
-        long long p = password[0].unicode() * 256 + password[1].unicode();
+        unsigned long long hash = 0;
+        unsigned long long p = password[0].unicode() * 256 + password[1].unicode();
         last = password[password.length() - 1].unicode();
         beforeLast = password[password.length() - 2].unicode();
         password.remove(0, 2);
@@ -66,7 +66,7 @@ void MainWindow::recalculate() {
             swap(main[i], main[rand() % i]);
 
         for (int i = 0; i < 10; i++)
-            main = '0' + main;
+            main += '0';
 
         for (int i = 0; i < 20; i++)
             if (main[i] == '0')
@@ -79,8 +79,8 @@ void MainWindow::recalculate() {
                 main[i] = special[rand() % special.length()];
 
         ui->siteLine->setText(site);
-        ui->passwordLine->setText(main.right(10));
-        ui->loginLine->setText(main.left(10));
+        ui->passwordLine->setText(main.left(10));
+        ui->loginLine->setText(main.right(10));
     }
 }
 
