@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rupass by vtyulb</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Rupass</h1>
+        <p>Generator of passwords: enter name of site - get password</p>
+
+        <p class="view"><a href="https://github.com/vtyulb/RuPass">View the Project on GitHub <small>vtyulb/RuPass</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/vtyulb/RuPass/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/vtyulb/RuPass/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/vtyulb/RuPass">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>About</h3>
+
+<p>This project generates pair(password login)
+from pair(master-password name_of_site).
+You cannot get master-password from other 3 components.
+There is no base, so if you loss all data on your computer,
+then you can install this program and you would get all back
+your information about passwords and logins.
+This program does not remember names of sites, where you have accounts.</p>
+
+<p>If you use this program there are only three things that you 
+should remember - your master-password, name of this program 
+and sites where you have accounts.</p>
+
+<h3>Algorithm</h3>
+
+<p>Algorithm of generation password and logins is simple:
+I take first two letters of password for gettin hash base.
+I take first half of password then site then second half of password.</p>
+
+<p>password: <strong>socret_password</strong><br>
+site: <strong>name_of_site</strong><br>
+result: <strong>cret_pname_of_siteassword</strong>  </p>
+
+<p>Then I take devil hash from this string. There is no way to understand
+what password was if you know hash and name of site.
+This hash defines password and login.
+One hash - one pair.
+Hash is unsigned long long, so there are ~2^64 different pairs.</p>
+
+<h3>Content</h3>
+
+<p>Login already contains only 10 small latin letters.
+Password already contains<br>
+---6 small latin letters<br>
+---1 big latin letter<br>
+---2 numbers<br>
+---1 special symbol !@#$%^&amp;*|  </p>
+
+<h3>Screenshots</h3>
+
+<p><img src="http://habrastorage.org/storage2/e6e/cef/9bb/e6ecef9bbf52ed154d7ed0f6a7367825.png"></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/vtyulb">vtyulb</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
