@@ -32,8 +32,8 @@ MainWindow::~MainWindow()
 }
 
 void MainWindow::recalculate() {
-    QString site = parseAddress(ui->address->text());
-    QString password = ui->password->text();
+    QByteArray site = parseAddress(ui->address->text()).toLocal8Bit();
+    QByteArray password = ui->password->text().toLocal8Bit();
     if (password.length() < 2)
         setError(critical, tr("Password must contains at least 2 symbols"));
     else {
@@ -43,14 +43,14 @@ void MainWindow::recalculate() {
             setError(normal);
 
         unsigned long long hash = 0;
-        unsigned long long p = password[0].unicode() * 256 + password[1].unicode();
-        last = password[password.length() - 1].unicode();
-        beforeLast = password[password.length() - 2].unicode();
+        unsigned long long p = password[0] * 256 + password[1];
+        last = password[password.length() - 1];
+        beforeLast = password[password.length() - 2];
         password.remove(0, 2);
-        QString main = password.left(password.length() / 2) + site + password.right((password.length() + 1) / 2);
+        QByteArray main = password.left(password.length() / 2) + site + password.right((password.length() + 1) / 2);
         for (int i = 0; i < main.length(); i++) {
             hash *= p;
-            hash += main[i].unicode() * rand();
+            hash += main[i] * rand();
         }
 
         last = hash << 32;
@@ -70,13 +70,13 @@ void MainWindow::recalculate() {
 
         for (int i = 0; i < 20; i++)
             if (main[i] == '0')
-                main[i] = small[rand() % small.length()];
+                main[i] = small[rand() % small.length()].toLatin1();
             else if (main[i] == '1')
-                main[i] = number[rand() % number.length()];
+                main[i] = number[rand() % number.length()].toLatin1();
             else if (main[i] == '2')
-                main[i] = big[rand() % big.length()];
+                main[i] = big[rand() % big.length()].toLatin1();
             else if (main[i] == '3')
-                main[i] = special[rand() % special.length()];
+                main[i] = special[rand() % special.length()].toLatin1();
 
         ui->siteLine->setText(site);
         ui->passwordLine->setText(main.left(10));
@@ -124,8 +124,8 @@ unsigned int MainWindow::rand() {
     return i % 999999937;
 }
 
-void MainWindow::swap(QCharRef a, QCharRef b) {
-    QChar c = a;
+void MainWindow::swap(QByteRef a, QByteRef b) {
+    char c = a;
     a = b;
     b = c;
 }

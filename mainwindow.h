@@ -36,7 +36,7 @@ private:
     void setError(int code, QString error = "");
     QString parseAddress(QString);
     unsigned int rand();
-    void swap(QCharRef a, QCharRef b);
+    void swap(QByteRef a, QByteRef b);
 private slots:
     void recalculate();
     void showPass(bool);
