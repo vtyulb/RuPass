@@ -87,15 +87,20 @@ void MainWindow::recalculate() {
 void MainWindow::setError(int code, QString error) {
     if (code == normal) {
         ui->errorLabel->hide();
-        ui->outputBox->show();
+//        ui->outputBox->show();
+        ui->outputBox->setEnabled(true);
     } else if (code == critical) {
         ui->errorLabel->setText(error);
+        ui->passwordLine->setText("");
+        ui->loginLine->setText("");
         ui->errorLabel->show();
-        ui->outputBox->hide();
+//        ui->outputBox->hide();
+        ui->outputBox->setEnabled(false);
     } else {
         ui->errorLabel->setText(error);
         ui->errorLabel->show();
-        ui->outputBox->show();
+//        ui->outputBox->show();
+        ui->outputBox->setEnabled(true);
     }
 }
 
